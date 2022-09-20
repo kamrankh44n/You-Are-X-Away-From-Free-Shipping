@@ -1,1 +1,11 @@
+{% assign shipping_value = 10000 %}
+{% assign cart_total = cart.total_price %}
+{% assign shipping_value_left = shipping_value | minus: cart_total %}
 
+<p class="free-shipping-threshold-text">
+{% if shipping_value_left > 0 %}
+  You are {{ shipping_value_left | money }} away from <b>FREE</b> shipping! All orders over $100 are eligible. <b><a href="/collections/">Continue shopping</a> </b>
+{% else %}
+  <b>Your order qualifies for FREE shipping!</b>
+{% endif %}
+</p>
